@@ -1,0 +1,47 @@
+@import '../../../styles/breakpoints.scss';
+@import '../../../styles/variables.scss';
+
+
+
+.block{
+  background:white;
+  box-shadow: 0 4px 4px rgba(4, 5, 73, 0.25), 14px 14px 20px rgba(5, 6, 114, 0.2);
+  border-radius: 8px;
+  flex: 0 0 auto;
+  width:660px;
+  max-width:100%;
+  margin-bottom:10px;
+  padding:32px 24px 60px 24px;
+
+  @media screen and (min-width: $md) {
+    padding:50px 58px;
+    margin-bottom:34px;
+  }
+
+  &__header{
+    margin-bottom:32px;
+  }
+
+  &__filters{
+    display:flex;
+    justify-content: space-between;
+    height:48px;
+    position:relative;
+  }
+}
+
+.placeholder{
+  text-align:center;
+
+  &__image{
+    width:160px;
+    height:160px;
+    background: url('../../../assets/placeholder/weather.svg') 50% 50% no-repeat;
+    background-size:160px 160px;
+    margin:54px auto 24px auto;
+  }
+
+  &__text{
+    color: $secondary;
+  }
+}

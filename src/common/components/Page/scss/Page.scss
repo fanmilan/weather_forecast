@@ -33,27 +33,4 @@
       background-position:bottom left;
     }
   }
-
-  &__content{
-    display:flex;
-    justify-content: space-between;
-    flex-wrap:wrap;
-    align-items: center;
-  }
 }
-
-
-
-
-
-
-@media screen and (max-width: 1439px) {
-  .page{
-    &__content{
-      flex-direction: column;
-
-    }
-  }
-}
-
-
