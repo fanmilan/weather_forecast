@@ -1,0 +1,77 @@
+@import 'variables.scss';
+
+@font-face {
+  font-family: 'Ubuntu';
+  src: url('../assets/fonts/ubuntu/Ubuntu-Regular.ttf')
+}
+
+@font-face {
+  font-family: "Ubuntu";
+  src: url("../assets/fonts/ubuntu/Ubuntu-Bold.ttf");
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: "Ubuntu";
+  src: url("../assets/fonts/ubuntu/Ubuntu-Italic.ttf");
+  font-style: italic;
+}
+
+body{
+  font-size:16px;
+  line-height:24px;
+  font-family: 'Ubuntu', sans-serif;
+}
+
+h1{
+  font-weight:bold;
+  font-size:32px;
+  line-height:32px;
+  color: $base_strong;
+}
+
+h2{
+  font-weight:bold;
+  font-size:24px;
+  line-height:24px;
+  color: $base_strong;
+}
+
+.input{
+  background: rgba(128, 131, 164, 0.06);
+  border: 2px solid rgba(128, 131, 164, 0.2);
+  border-radius:8px;
+  padding:12px 16px;
+  width:252px;
+  height:100%;
+  position:relative;
+
+  &:hover{
+    border: 2px solid $secondary;
+  }
+
+  &:focus{
+    border: 2px solid $accent;
+  }
+
+  &::placeholder{
+    color: $secondary;
+    font-size:16px;
+    line-height: 24px;
+  }
+
+
+}
+
+.select{
+  &:after{
+    content:'';
+    width:16px;
+    height:16px;
+    background:url('../assets/icons/16/chevron-bottom.svg') 50% 50% no-repeat;
+    background-size: 16px 16px;
+    position:absolute;
+    right:16px;
+    top:16px;
+  }
+}

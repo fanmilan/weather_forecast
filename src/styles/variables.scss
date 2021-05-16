@@ -1,0 +1,26 @@
+//colors
+$accent: #373AF5;
+$secondary: #8083A4;
+$base_strong: #2C2D76;
+$critic: #E5596D;
+$base_weak: #FFFFFF;
+
+
+//text styles
+@mixin body_bold{
+  font-weight:bold;
+  font-size:16px;
+  line-height:24px;
+}
+
+@mixin body{
+  font-size:16px;
+  line-height:24px;
+}
+
+@mixin meta{
+  font-size:14px;
+  line-height:18px;
+}
+
+//media queries

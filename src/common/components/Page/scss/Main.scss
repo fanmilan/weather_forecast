@@ -1,0 +1,19 @@
+@import '../../../../styles/breakpoints.scss';
+@import '../../../../styles/variables.scss';
+
+.main{
+  max-width: $xl;
+  min-width: $xs;
+  width:100%;
+
+  flex-grow:1;
+  margin:auto;
+  padding:0 10px;
+
+  @media screen and (min-width: $md) {
+    main{
+      padding:0 45px;
+
+    }
+  }
+}

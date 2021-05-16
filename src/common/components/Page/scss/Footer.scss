@@ -1,0 +1,13 @@
+@import '../../../../styles/variables.scss';
+
+.footer{
+  padding: 16px 0;
+
+  &__content{
+    @include meta;
+
+    color: $base_weak;
+    text-align:center;
+    opacity:0.6;
+  }
+}
