@@ -5,7 +5,7 @@ import {useEffect} from "react";
 type fieldProps = {
     name: string,
     className?: string,
-    value: string | null,
+    value?: string | null,
     placeholder: string,
     children: React.ReactNode //input,
     onClick?: any
@@ -16,17 +16,18 @@ type fieldProps = {
 export const Field = ({name, className, value, placeholder, children, onClick} : fieldProps) => {
 
     const handleClick = () => {
-       // console.log(document.getElementsByTagName('input')[1].focus());
         if (onClick) {
             onClick();
         }
     }
+    let fieldClassName = `field_${name} ${className}`;
+    fieldClassName += (!value) ? ' field_is-empty' : ' field_not-empty';
 
-    let fieldClass = (!value) ? ' field_is-empty' : '';
+    return <div className={'field '+fieldClassName}>
+        <div className="field__input" onClick={handleClick}>
+            {children}
+            <div className={'field__placeholder'}>{placeholder}</div>
+        </div>
 
-    return <div className={'field field_'+name+' '+className + fieldClass}>
-        <div className="field__input" onClick={handleClick}>{value || placeholder}</div>
-        {children}
-        <div className="field__icon" />
     </div>
 }

@@ -1,4 +1,5 @@
 @import 'variables.scss';
+@import 'input.scss';
 
 @font-face {
   font-family: 'Ubuntu';
@@ -37,34 +38,10 @@ h2{
   color: $base_strong;
 }
 
-.input{
-  background: rgba(128, 131, 164, 0.06);
-  border: 2px solid rgba(128, 131, 164, 0.2);
-  border-radius:8px;
-  padding:12px 16px;
-  width:252px;
-  height:100%;
-  position:relative;
 
-  &:hover{
-    border: 2px solid $secondary;
-  }
-
-  &:focus{
-    border: 2px solid $accent;
-  }
-
-  &::placeholder{
-    color: $secondary;
-    font-size:16px;
-    line-height: 24px;
-  }
-
-
-}
 
 .select{
-  &:after{
+  /*&:after{
     content:'';
     width:16px;
     height:16px;
@@ -73,5 +50,5 @@ h2{
     position:absolute;
     right:16px;
     top:16px;
-  }
+  }*/
 }

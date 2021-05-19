@@ -1,0 +1,50 @@
+@import '../../../styles/breakpoints.scss';
+@import '../../../styles/variables.scss';
+
+.field_date{
+  .field__input:after{
+    background-image:url('../../../assets/icons/16/calendar.svg');
+  }
+}
+
+.field_is-empty{
+  .input_date{
+    color:transparent;
+  }
+}
+
+.input_date{
+
+  @include body;
+
+
+  position:absolute;
+  z-index:2;
+  width:100%;
+  height:100%;
+  left:0;
+  top:0;
+
+
+  &:focus{
+    color: $base_strong;;
+  }
+
+  &:focus + .field__placeholder{
+    display:none;
+  }
+}
+
+.input_date::-webkit-calendar-picker-indicator {
+  color: transparent;
+  z-index: 1;
+  width:50px;
+  height:50px;
+  position:absolute;
+  top:0;
+  right:0;
+  cursor:pointer;
+  background:none;
+}
+
+
