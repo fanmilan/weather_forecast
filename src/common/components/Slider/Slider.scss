@@ -1,0 +1,49 @@
+@import '../../../styles/breakpoints.scss';
+@import '../../../styles/variables.scss';
+
+.slider{
+  width:100%;
+  position:relative;
+
+
+
+  &__inside{
+    display:flex;
+    justify-content: space-between;
+    overflow:auto;
+    padding-bottom:10px;
+
+    @media screen and (min-width: $small) {
+      overflow: visible;
+    }
+  }
+
+  &__btn{
+    display:none;
+    @media screen and (min-width: $small) {
+      display:block;
+      position:absolute;
+      height:24px;
+      width:24px;
+      background:url('../../../assets/icons/24/chevron-left.svg') 50% 50% no-repeat;
+      background-size:24px;
+      top:50%;
+      margin-top:-12px;
+      cursor:pointer;
+    }
+
+    &_left{
+      left: -34px;
+    }
+
+    &_right{
+      right:-34px;
+      transform: rotate(180deg);
+    }
+
+    &_disable{
+      opacity:0.6;
+    }
+
+  }
+}
