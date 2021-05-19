@@ -1,0 +1,69 @@
+@import '../../../styles/breakpoints.scss';
+@import '../../../styles/variables.scss';
+
+.weather-card{
+
+  background:$accent;
+  color: $base_weak;
+  flex-shrink: 0;
+  width:174px;
+  padding:20px;
+  height:238px;
+  border: 2px solid #2C2D76;
+  box-shadow: 0 4px 4px rgba(4, 5, 73, 0.25), 14px 14px 20px rgba(5, 6, 114, 0.2);
+  border-radius: 8px;
+  margin-right:10px;
+
+  &:last-of-type{
+    margin-right:0;
+  }
+
+  @media screen and (min-width: $small) {
+    margin-right:0;
+    &_hidden{
+      display:none;
+    }
+  }
+
+
+  &__inside{
+    position:relative;
+    width:100%;
+    height:100%;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__date{
+    @include body_bold;
+
+    position:absolute;
+    left:0;
+    top:0;
+  }
+
+  &__image{
+    width:120px;
+    height:120px;
+  }
+
+  &__temperature{
+    @include h1;
+
+    position:absolute;
+    right:0;
+    bottom:0;
+  }
+
+  &_full{
+    width:100%;
+
+    .weather-card__image{
+      width:160px;
+      height:160px;
+      position:relative;
+    }
+  }
+
+}
