@@ -1,6 +1,11 @@
 @import '../../../styles/breakpoints.scss';
 @import '../../../styles/variables.scss';
 
+
+.input_select{
+  color: $base_strong;
+}
+
 .select-modal{
 
   margin-top:12px;
@@ -15,7 +20,7 @@
   box-sizing: border-box;
   box-shadow: 0 2px 4px rgba(4, 5, 73, 0.16), 14px 14px 20px rgba(5, 6, 114, 0.08);
   border-radius: 8px;
-  z-index:1;
+  z-index:3;
 
 
   &__list{

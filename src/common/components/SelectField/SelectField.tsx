@@ -1,28 +1,31 @@
 import './SelectField.scss';
 
 import {Field} from "../Field/Field";
-import {useState} from "react";
+import {useEffect, useRef, useState} from "react";
+import {CITIES} from "../../constants/cities";
+import {cityType} from "../../../redux/types/weather";
 
 
 type selectFieldProps = {
-    placeholder: string,
+    handleChange?: (city: cityType) => void
 }
 
 
 
-export const SelectField = ({placeholder} : selectFieldProps) => {
+export const SelectField = ({handleChange} : selectFieldProps) => {
+
     const [value, setValue] = useState<null | string>(null);
     const [isOpenModal, setIsOpenModal] = useState<boolean>(false);
 
-    const handleClick = () => {
+    const closeModal = () => {
         setIsOpenModal(!isOpenModal);
     }
 
-    const selectOption = (value: string) => {
-        setValue(value);
+    const selectOption = (value: cityType) => {
+        setValue(value.name);
         setIsOpenModal(false);
+        if (handleChange) handleChange(value);
     }
-
 
     let fieldClass = (isOpenModal) ? 'field_is-open' : '';
 
@@ -30,25 +33,42 @@ export const SelectField = ({placeholder} : selectFieldProps) => {
                   name={'select'}
                   placeholder={'Select city'}
                   value={value}
-                  onClick={handleClick}>
-        <input type={'text'} className={'input input_select'} placeholder={placeholder} />
+                  onClick={closeModal}>
+        <div className={'input input_select'}>{value}</div>
         {
-            isOpenModal && <SelectModal onClick={selectOption}/>
+            isOpenModal && <SelectModal onClick={selectOption} closeModal={closeModal}/>
         }
     </Field>
 }
 
 
 type selectModalProps = {
-    onClick: (city: string) => void
+    closeModal: () => void,
+    onClick: (city: cityType) => void
 }
 
-const SelectModal = ({onClick} : selectModalProps) => {
-    const cities = ['Самара', 'Тольятти', 'Москва', 'Казань', 'Саратов', 'Краснодар'];
+const SelectModal = ({onClick, closeModal} : selectModalProps) => {
 
-    return <div className="select-modal">
+    const modalRef = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        const handleClickOutsideModal = (e: MouseEvent) => {
+            if (modalRef.current && !modalRef.current.contains(e.target as Node)) {
+                closeModal();
+            }
+        }
+
+        document.addEventListener('click', handleClickOutsideModal);
+        return () => {
+            document.removeEventListener('click', handleClickOutsideModal);
+        }
+    }, [closeModal]);
+
+
+
+    return <div className="select-modal" ref={modalRef}>
         <ul className={'select-modal__list'}>
-            {cities.map((city) => <li className='select-modal__option' onClick={() => onClick(city)} key={city}>{city}</li>)}
+            {CITIES.map((city) => <li className='select-modal__option' onClick={() => onClick(city)} key={city.name}>{city.name}</li>)}
         </ul>
     </div>
 }
