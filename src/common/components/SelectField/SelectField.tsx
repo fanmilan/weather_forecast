@@ -7,22 +7,22 @@ import {cityType} from "../../../redux/types/weather";
 
 
 type selectFieldProps = {
-    handleChange?: (city: cityType) => void
+    handleChange?: (city: cityType) => void,
+    city: null | cityType
 }
 
 
 
-export const SelectField = ({handleChange} : selectFieldProps) => {
-
-    const [value, setValue] = useState<null | string>(null);
+export const SelectField = ({handleChange, city} : selectFieldProps) => {
     const [isOpenModal, setIsOpenModal] = useState<boolean>(false);
 
+
+    let value = (city) ? city.name : null;
     const closeModal = () => {
         setIsOpenModal(!isOpenModal);
     }
 
     const selectOption = (value: cityType) => {
-        setValue(value.name);
         setIsOpenModal(false);
         if (handleChange) handleChange(value);
     }

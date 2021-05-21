@@ -1,5 +1,5 @@
 import {useDispatch, useSelector} from "react-redux";
-import {Block, Filters, Placeholder} from "../../common/components/Block/Block";
+import {Block, Filters, Placeholder, Result} from "../../common/components/Block/Block";
 import {SelectField} from "../../common/components/SelectField/SelectField";
 import {DateField} from "../../common/components/DateField/DateField";
 import {weatherType} from "../../redux/types/weather";
@@ -14,21 +14,12 @@ export const PastForecast = () => {
 
     return <Block title={'Forecast for a Date in the Past'}>
         <Filters>
-            <SelectField handleChange={(city) =>  dispatch(changeCityAndSend(city))} />
+            <SelectField handleChange={(city) =>  dispatch(changeCityAndSend(city))} city={weather.city}/>
             <DateField handleChange={(date) =>  dispatch(changeDateAndSend(date))} />
         </Filters>
         {
-            weather.result ? <Result result={weather.result} /> : <Placeholder />
+            weather.result ? <Result><WeatherCard weather={weather.result} className={'weather-card_full'} /></Result> : <Placeholder />
         }
     </Block>
 }
 
-type resultProps = {
-    result: weatherType
-}
-
-const Result = ({result} : resultProps) => {
-    return <div className={'result'}>
-        <WeatherCard weather={result} className={'weather-card_full'} />
-    </div>
-}

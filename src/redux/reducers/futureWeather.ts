@@ -24,6 +24,11 @@ export const futureWeatherReducer = (state: futureWeatherStateType = initialValu
                 result: action.payload,
                 isLoading: false
             };
+        case Constants.CHANGE_CITY:
+            return {
+                ...state,
+                city: action.payload
+            }
         case Constants.CHANGE_PAGE:
             return changePage(action.payload, state);
         default:
