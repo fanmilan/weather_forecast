@@ -1,28 +1,28 @@
 import './Slider.scss';
 import {WeatherCard} from "../WeatherCard/WeatherCard";
 import {useState} from "react";
+import {weatherType} from "../../../redux/types/weather";
 
-export const Slider = ({items} : any) => {
 
+type sliderProps = {
+    items: Array<weatherType>,
+    changePage: (newPage: number) => void,
+    page: number,
+    countOnPage: number
+}
 
-    const cardOnPage = 3;
+export const Slider = ({items, changePage, page, countOnPage} : sliderProps) => {
 
-    const lastPage = items.length - cardOnPage;
-
-    const [page, setPage] = useState<number>(0); // currentSlide
-
-    const changePage = (newPage: number) => {
-        if (newPage >= 0 && newPage <= lastPage) setPage(newPage);
-    }
+    const lastPage = items.length - countOnPage;
 
     return <div className={'slider'}>
             <div className="slider__inside">
-                {items.map((item : any, index: number) => {
+                {items.map((item , index: number) => {
                     let weatherClass = (index >= page && index<page+3) ? '' : 'weather-card_hidden';
-                    return <WeatherCard weather={item} className={weatherClass} />;
+                    return <WeatherCard key={item.date} weather={item} className={weatherClass} />;
                 })}
             </div>
-        <div className={"slider__btn slider__btn_left " + ((page === 0) ? 'slider__btn_disable' : '')} onClick={() => changePage(page-1)}/>
+        <div className={"slider__btn slider__btn_left " + ((page === 0) ? 'slider__btn_disable' : '')} onClick={() => changePage(page-1)} />
         <div className={"slider__btn slider__btn_right " + ((page === lastPage) ? 'slider__btn_disable' : '')} onClick={() => changePage(page+1)} />
     </div>
 }
