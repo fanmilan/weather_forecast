@@ -11,8 +11,15 @@ $base_weak: #FFFFFF;
   font-weight:bold;
   font-size:32px;
   line-height:32px;
+  color: $base_strong;
 }
 
+@mixin h2{
+  font-weight:bold;
+  font-size:24px;
+  line-height:24px;
+  color: $base_strong;
+}
 
 @mixin body_bold{
   font-weight:bold;
@@ -30,4 +37,5 @@ $base_weak: #FFFFFF;
   line-height:18px;
 }
 
-//media queries
+
+$font: 'Ubuntu', sans-serif;

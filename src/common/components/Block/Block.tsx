@@ -1,30 +1,36 @@
 import './Block.scss';
 
 import {SelectField} from "../SelectField/SelectField";
+import {DateField} from "../DateField/DateField";
+import {WeatherCard} from "../WeatherCard/WeatherCard";
 
 type blockProps = {
-    title: string
+    title: string,
+    children: React.ReactNode
 }
 
-export const Block = ({title} : blockProps) => {
-    return <section className={'block'}>
-        <div className="block__header">
+export const Block = ({title, children} : blockProps) => {
+    return <article className={'block'}>
+        <header className="block__header">
             <h1 className="block__title">{title}</h1>
-        </div>
+        </header>
         <div className="block__body">
-            <Filters />
-            <Placeholder />
+            {children}
         </div>
-    </section>
+    </article>
 }
 
-const Filters = () => {
+type filtersProps = {
+    children: React.ReactNode
+}
+
+export const Filters = ({children} : filtersProps) => {
     return <div className={'block__filters'}>
-        <SelectField placeholder={'Select city'}/>
+        {children}
     </div>
 }
 
-const Placeholder = () => {
+export const Placeholder = () => {
     return <div className={'placeholder'}>
         <div className="placeholder__image" />
         <div className="placeholder__text">Fill in all the fields and the weather will be displayed</div>

@@ -11,7 +11,7 @@
   position:relative;
   z-index:1;
   color: $base_strong;
-  font-family: "Ubuntu", sans-serif;
+  font-family: $font;
 }
 
 @mixin placeholder{

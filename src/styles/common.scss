@@ -19,36 +19,16 @@
 }
 
 body{
-  font-size:16px;
-  line-height:24px;
-  font-family: 'Ubuntu', sans-serif;
+  @include body;
+  font-family: $font;
 }
 
 h1{
-  font-weight:bold;
-  font-size:32px;
-  line-height:32px;
-  color: $base_strong;
+  @include h1;
+  margin:0;
 }
 
 h2{
-  font-weight:bold;
-  font-size:24px;
-  line-height:24px;
-  color: $base_strong;
-}
-
-
-
-.select{
-  /*&:after{
-    content:'';
-    width:16px;
-    height:16px;
-    background:url('../assets/icons/16/chevron-bottom.svg') 50% 50% no-repeat;
-    background-size: 16px 16px;
-    position:absolute;
-    right:16px;
-    top:16px;
-  }*/
+  @include h2;
+  margin:0;
 }

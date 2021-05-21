@@ -1,19 +1,27 @@
+import 'normalize.css';
 import './styles/common.scss';
+import './App.css';
 
 import React from 'react';
-import './App.css';
+
+
 import {Page} from "./common/components/Page/Page";
-import {Block} from "./common/components/Block/Block";
+import {FutureForecast} from "./components/FutureForecast/FutureForecast";
+import {Provider} from "react-redux";
+import {store} from "./redux/store/store";
+import {PastForecast} from "./components/PastForecast/PastForecast";
 
 function App() {
-  return (
-    <div className="App">
-      <Page>
-        <Block title={'7 Days Forecast'} />
-        <Block title={'Forecast for a Date in the Past'} />
-      </Page>
-    </div>
-  );
+    return (
+        <Provider store={store}>
+            <div className="App">
+                <Page>
+                    <FutureForecast />
+                    <PastForecast />
+                </Page>
+            </div>
+        </Provider>
+    );
 }
 
 export default App;
