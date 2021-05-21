@@ -13,9 +13,17 @@
   margin-bottom:10px;
   padding:32px 24px 60px 24px;
 
+  &:last-of-type{
+    margin-bottom:0;
+  }
+
   @media screen and (min-width: $small) {
-    padding:50px 58px;
+    padding:50px 58px 70px 58px;
     margin-bottom:34px;
+  }
+
+  @media screen and (min-width: $xl) {
+    margin-bottom:0;
   }
 
   &__header{
@@ -26,23 +34,39 @@
     }
   }
 
+
   &__filters{
     display:flex;
     justify-content: space-between;
     position:relative;
     flex-wrap:wrap;
+
+    @media screen and (min-width: $small) {
+      margin-bottom:54px;
+    }
+
+  }
+
+  &__result{
+    margin-top:6px;
   }
 }
 
 .placeholder{
   text-align:center;
+  margin:6px 0 3px 0;
+
+  @media screen and (min-width: $small) {
+    margin-bottom:20px;
+    margin-top:10px;
+  }
 
   &__image{
     width:160px;
     height:160px;
     background: url('../../../assets/placeholder/weather.svg') 50% 50% no-repeat;
     background-size:160px 160px;
-    margin:54px auto 24px auto;
+    margin:0 auto 24px auto;
   }
 
   &__text{

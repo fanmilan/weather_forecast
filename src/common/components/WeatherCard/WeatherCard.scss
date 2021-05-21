@@ -51,6 +51,7 @@
   &__temperature{
     @include h1;
 
+    color: $base_weak;
     position:absolute;
     right:0;
     bottom:0;

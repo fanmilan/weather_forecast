@@ -3,35 +3,31 @@
 
 .header {
   padding: 32px 0 24px 0;
-  font-size: 32px;
-  line-height: 32px;
+
 
   @media screen and (min-width: $md) {
     padding: 65px 0 60px 0;
-    font-size: 102px;
-    line-height: 122px;
+
   }
 
-  &__logo {
+  &__title {
     width: 243px;
     color: $base_weak;
     margin: auto;
-    font-weight: bold;
 
     @media screen and (min-width: $md) {
       width: 775px;
+      font-size: 102px;
+      line-height: 122px;
     }
 
   }
 
-}
-
-.logo {
-  &__top {
+  &__title-top {
     padding-bottom: 0;
   }
 
-  &__bottom {
+  &__title-bottom {
     position: relative;
     text-align: right;
     display: block;
@@ -40,34 +36,10 @@
       margin-top: -32px;
     }
   }
+
 }
 
 
-/*.header{
-  padding:65px 0 60px 0;
 
-  &__logo{
-    width: 775px;
-    margin:auto;
-    color:white;
-    font-weight:bold;
-    font-size: 102px;
-    line-height: 122px;
-    position:relative;
-  }
-}
 
-.logo{
-  &__top{
-    display:block;
-    padding-bottom:90px;
-  }
 
-  &__bottom{
-    position:absolute;
-    right:0;
-    bottom:0;
-  }
-}*/
-
-//Change Header logo...

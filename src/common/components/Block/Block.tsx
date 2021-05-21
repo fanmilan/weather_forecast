@@ -30,6 +30,12 @@ export const Filters = ({children} : filtersProps) => {
     </div>
 }
 
+export const Result = ({children} : filtersProps) => {
+    return <div className={'block__result'}>
+        {children}
+    </div>
+}
+
 export const Placeholder = () => {
     return <div className={'placeholder'}>
         <div className="placeholder__image" />

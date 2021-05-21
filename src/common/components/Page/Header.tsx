@@ -2,9 +2,9 @@ import './scss/Header.scss';
 
 export const Header = () => {
     return <header className={'header'}>
-        <div className="header__logo">
-            <span className={'logo__top'}>Weather</span>
-            <span className={'logo__bottom'}>forecast</span>
-        </div>
+        <h1 className="header__title">
+            <span className={'header__title-top'}>Weather</span>
+            <span className={'header__title-bottom'}>forecast</span>
+        </h1>
     </header>;
 }

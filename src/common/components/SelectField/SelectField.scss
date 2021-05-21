@@ -26,6 +26,7 @@
   &__list{
     list-style: none;
     padding:0 6px;
+    margin:6px 0;
   }
 
   &__option{
@@ -35,11 +36,6 @@
     margin-top: 6px;
     cursor:pointer;
     padding:6px 10px;
-
-
-    &:last-of-type{
-      margin-bottom:6px;
-    }
 
     &:hover{
       background: rgba(128, 131, 164, 0.06);
