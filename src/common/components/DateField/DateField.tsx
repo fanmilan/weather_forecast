@@ -17,6 +17,6 @@ export const DateField = ({handleChange, date, error} : dateFieldProps) => {
 
 
     return <Field name={'date'} placeholder={'Select date'} value={date} error={error}>
-        <input type={'date'} className={'input input_date'} placeholder={'Select date'} onChange={(e: React.ChangeEvent<HTMLInputElement>) => {handleChange(e.target.value)} } min={getMinIsoDate()} />
+        <input type={'date'} className={'input input_date'}  placeholder={'Select date'} onChange={(e: React.ChangeEvent<HTMLInputElement>) => {handleChange(e.target.value)} } min={getMinIsoDate()} max={getMaxIsoDate()} required />
     </Field>
 }

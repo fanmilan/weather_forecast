@@ -36,16 +36,30 @@
   }
 }
 
-.input_date::-webkit-calendar-picker-indicator {
-  color: transparent;
-  z-index: 1;
-  width:50px;
-  height:50px;
-  position:absolute;
-  top:0;
-  right:0;
-  cursor:pointer;
-  background:none;
+.input_date{
+
+  &::-webkit-calendar-picker-indicator {
+    color: transparent;
+    z-index: 1;
+    width:50px;
+    height:50px;
+    position:absolute;
+    top:0;
+    right:0;
+    cursor:pointer;
+    background:none;
+  }
+
+
+}
+
+.field_is-empty{
+  .input_date:not(:focus) {
+    &::-webkit-datetime-edit-month-field,
+    &::-webkit-datetime-edit-year-field{
+      color: transparent;
+    }
+  }
 }
 
 

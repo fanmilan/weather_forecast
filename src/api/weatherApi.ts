@@ -10,6 +10,14 @@ export const handleError = (response: Response) => {
             })
 }
 
+type dailyResponseType = {
+    dt: number,
+    temp: {
+        day: number
+    },
+    weather: Array<{icon: string}>
+}
+
 export const getFutureForecastApi = (params: cityType) => {
     const url = `https://api.openweathermap.org/data/2.5/onecall?lat=${params.coordinates[0]}&lon=${params.coordinates[1]}&units=metric&exclude=hourly,minutely,alerts&appid=${TOKEN}`
 
@@ -20,7 +28,7 @@ export const getFutureForecastApi = (params: cityType) => {
             }
             return response.json();
         })
-        .then(result => result.daily.map((item: any) => ({
+        .then(result => result.daily.map((item: dailyResponseType) => ({
                 date: new Date(item.dt * 1000).toLocaleString('en-GB', {
                     year: "numeric", month: "short", day: "numeric"
                 }),

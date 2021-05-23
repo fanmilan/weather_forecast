@@ -4,9 +4,6 @@ import {getDateForecastApi} from "../../api/weatherApi";
 import {
     convertDateToTimestampForWeathermap,
     detectValidDate,
-    getMinDate,
-    getMinDateUTC,
-    getTodayTimestamp
 } from "../../common/date";
 
 
