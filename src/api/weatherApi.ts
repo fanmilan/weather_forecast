@@ -44,7 +44,7 @@ type dateParamsType = {
 }
 
 export const getDateForecastApi = (params: dateParamsType) => {
-    const url = `http://api.openweathermap.org/data/2.5/onecall/timemachine?lat=${params.city.coordinates[0]}&lon=${params.city.coordinates[1]}&dt=${params.date}&units=metric&appid=${TOKEN}`
+    const url = `https://api.openweathermap.org/data/2.5/onecall/timemachine?lat=${params.city.coordinates[0]}&lon=${params.city.coordinates[1]}&dt=${params.date}&units=metric&appid=${TOKEN}`
 
     return fetch(url)
         .then(response => {
