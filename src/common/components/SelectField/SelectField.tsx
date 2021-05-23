@@ -16,8 +16,8 @@ type selectFieldProps = {
 export const SelectField = ({handleChange, city} : selectFieldProps) => {
     const [isOpenModal, setIsOpenModal] = useState<boolean>(false);
 
-
     let value = (city) ? city.name : null;
+
     const closeModal = () => {
         setIsOpenModal(!isOpenModal);
     }

@@ -1,12 +1,12 @@
-import {AppThunk, cityType, Constants} from "../types/weather";
-import {getFutureForecastApi} from "../../api/weatherApi";
-
+import {AppThunk, cityType} from "../types/weather";
+import {Constants} from "../types/futureWeather";
+import {getFutureForecastApi, handleError} from "../../api/weatherApi";
 
 
 export const getFutureForecast = (city: cityType): AppThunk => (dispatch) => {
 
     dispatch({
-        type: Constants.CHANGE_CITY,
+        type: Constants.CHANGE_CITY_FOR_FUTURE,
         payload: city
     });
 
@@ -21,7 +21,13 @@ export const getFutureForecast = (city: cityType): AppThunk => (dispatch) => {
                 payload: res
             });
         })
-        .catch()
+        .catch((err: Error) => {
+            dispatch({
+                type: Constants.GET_7_DAYS_FORECAST_ERROR,
+                payload: err.message
+            });
+        })
+
 }
 
 export const changePage = (page: number) => ({type: Constants.CHANGE_PAGE, payload: page});

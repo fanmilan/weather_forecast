@@ -1,6 +1,6 @@
 import './FutureForecast.scss';
 
-import {Block, Filters, Placeholder, Result} from "../../common/components/Block/Block";
+import {Block, ErrorRequest, Filters, Placeholder, Result} from "../../common/components/Block/Block";
 import {SelectField} from "../../common/components/SelectField/SelectField";
 import {useDispatch, useSelector} from "react-redux";
 import {rootStateType} from "../../redux/types/weather";
@@ -16,7 +16,12 @@ export const FutureForecast = () => {
             <SelectField handleChange={(city) => dispatch(getFutureForecast(city))} city={weather.city}/>
         </Filters>
         {
-            weather.result.length ? <Result><Slider items={weather.result} page={weather.page} countOnPage={weather.countOnPage} changePage={(page) => dispatch(changePage(page))}/></Result> : <Placeholder/>
+            weather.result.length ?
+                <Result><Slider items={weather.result} page={weather.page} countOnPage={weather.countOnPage}
+                                changePage={(page) => dispatch(changePage(page))}/></Result> : <Placeholder/>
+        }
+        {
+            weather.errorRequest && <ErrorRequest text={weather.errorRequest} />
         }
     </Block>
 }

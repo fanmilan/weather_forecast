@@ -1,37 +1,22 @@
 import './DateField.scss';
 import {Field} from "../Field/Field";
-import {useState} from "react";
+import React from "react";
+import {getMaxIsoDate, getMinIsoDate} from "../../date";
 
 
 type dateFieldProps = {
-    handleChange: (date: number) => void
+    handleChange: (date: string) => void,
+    date: null | string,
+    error: null | string
 }
 
-export const DateField = ({handleChange} : dateFieldProps) => {
+export const DateField = ({handleChange, date, error} : dateFieldProps) => {
 
-    const [dateValue, setDateValue] = useState(null);
-
-    const currentDate = new Date();
-
-
-    const convertDateToIso = (date: any) => {
-        return date.toISOString().split('T')[0];
-    }
+    console.log(getMinIsoDate());
+    console.log(getMaxIsoDate());
 
 
-    const onChange = (e: any) => {
-
-        //check if date is correct
-
-        // 5 days before -
-
-        setDateValue(e.target.value);
-        handleChange(new Date(e.target.value).getTime() / 1000);
-    }
-
-
-
-    return <Field name={'date'} placeholder={'Select date'} value={dateValue}>
-        <input type={'date'} className={'input input_date'} placeholder={'Select date'} onChange={onChange} min={'2021-05-10'}/>
+    return <Field name={'date'} placeholder={'Select date'} value={date} error={error}>
+        <input type={'date'} className={'input input_date'} placeholder={'Select date'} onChange={(e: React.ChangeEvent<HTMLInputElement>) => {handleChange(e.target.value)} } min={getMinIsoDate()} />
     </Field>
 }

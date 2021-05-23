@@ -1,5 +1,6 @@
-import {Constants, futureWeatherStateType, weatherType} from "../types/weather";
+import {weatherType} from "../types/weather";
 import {AnyAction} from "redux";
+import {Constants, futureWeatherStateType} from "../types/futureWeather";
 
 
 const initialValue = {
@@ -8,15 +9,18 @@ const initialValue = {
     city: null,
     page: 0,
     countOnPage: 3,
+    errorRequest: null
 }
-
 
 export const futureWeatherReducer = (state: futureWeatherStateType = initialValue, action: AnyAction): futureWeatherStateType => {
     switch (action.type) {
         case Constants.GET_7_DAYS_FORECAST_REQUEST:
             return {
                 ...state,
-                isLoading: true
+                result:[],
+                page: 0,
+                isLoading: true,
+                errorRequest: null,
             };
         case Constants.GET_7_DAYS_FORECAST_SUCCESS:
             return {
@@ -24,7 +28,14 @@ export const futureWeatherReducer = (state: futureWeatherStateType = initialValu
                 result: action.payload,
                 isLoading: false
             };
-        case Constants.CHANGE_CITY:
+        case Constants.GET_7_DAYS_FORECAST_ERROR:
+            return {
+                ...state,
+                result: [],
+                errorRequest: action.payload,
+                isLoading: false
+            };
+        case Constants.CHANGE_CITY_FOR_FUTURE:
             return {
                 ...state,
                 city: action.payload

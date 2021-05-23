@@ -2,13 +2,21 @@ import {cityType} from "../redux/types/weather";
 
 const TOKEN = '3c237680bd869ff1f9b731f466278d6b';
 
+export const handleError = (response: Response) => {
+        return response
+            .json()
+            .then((err : {code: number, message: string}) => {
+                throw new Error(err.message);
+            })
+}
+
 export const getFutureForecastApi = (params: cityType) => {
-    const url = `http://api.openweathermap.org/data/2.5/onecall?lat=${params.coordinates[0]}&lon=${params.coordinates[1]}&units=metric&exclude=hourly,minutely,alerts&appid=${TOKEN}`
+    const url = `https://api.openweathermap.org/data/2.5/onecall?lat=${params.coordinates[0]}&lon=${params.coordinates[1]}&units=metric&exclude=hourly,minutely,alerts&appid=${TOKEN}`
 
     return fetch(url)
         .then(response => {
             if (!response.ok) {
-                throw new Error('Response is not ok...');
+                return handleError(response);
             }
             return response.json();
         })
@@ -19,7 +27,7 @@ export const getFutureForecastApi = (params: cityType) => {
                 temperature: Math.round(item.temp.day),
                 image: `https://openweathermap.org/img/wn/${item.weather[0].icon}@2x.png`
             }))
-        );
+        )
 }
 
 type dateParamsType = {
@@ -33,18 +41,15 @@ export const getDateForecastApi = (params: dateParamsType) => {
     return fetch(url)
         .then(response => {
             if (!response.ok) {
-                throw new Error('Response is not ok...');
+                return handleError(response);
             }
             return response.json();
         })
-        .then(result => {
-            let hourly = result.hourly[14];
-            return ({
-                date: new Date(hourly.dt * 1000).toLocaleString('en-GB', {
+        .then(result =>  ({
+                date: new Date(result.current.dt * 1000).toLocaleString('en-GB', {
                     year: "numeric", month: "short", day: "numeric"
                 }),
-                temperature: Math.round(hourly.temp),
-                image: `https://openweathermap.org/img/wn/${hourly.weather[0].icon}@2x.png`
-            });
-        });
+                temperature: Math.round(result.current.temp),
+                image: `https://openweathermap.org/img/wn/${result.current.weather[0].icon}@2x.png`
+            }));
 }

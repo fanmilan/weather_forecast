@@ -1,8 +1,5 @@
 import './Block.scss';
 
-import {SelectField} from "../SelectField/SelectField";
-import {DateField} from "../DateField/DateField";
-import {WeatherCard} from "../WeatherCard/WeatherCard";
 
 type blockProps = {
     title: string,
@@ -20,20 +17,23 @@ export const Block = ({title, children} : blockProps) => {
     </article>
 }
 
-type filtersProps = {
-    children: React.ReactNode
-}
 
-export const Filters = ({children} : filtersProps) => {
+export const Filters = ({children} : { children: React.ReactNode }) => {
     return <div className={'block__filters'}>
         {children}
     </div>
 }
 
-export const Result = ({children} : filtersProps) => {
+export const Result = ({children} : {children: React.ReactNode}) => {
     return <div className={'block__result'}>
         {children}
     </div>
+}
+
+
+
+export const ErrorRequest = ({text} : { text: string }) => {
+    return <div className={'block__error'}>{text}</div>;
 }
 
 export const Placeholder = () => {
