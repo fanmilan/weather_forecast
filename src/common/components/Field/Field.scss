@@ -9,6 +9,10 @@
   margin-bottom:24px;
   height:48px;
 
+  &:last-of-type{
+    margin-bottom:0;
+  }
+
   @media screen and (min-width: $small) {
     width:252px;
     margin-bottom:0;

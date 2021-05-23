@@ -45,6 +45,7 @@
     justify-content: space-between;
     position:relative;
     flex-wrap:wrap;
+    margin-bottom:30px;
 
     @media screen and (min-width: $small) {
       margin-bottom:54px;
@@ -53,18 +54,17 @@
   }
 
   &__result{
-    margin-top:6px;
+    //margin-top:6px;
   }
 }
 
 .placeholder{
   text-align:center;
-  margin:6px 0 3px 0;
+  height:238px;
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
 
-  @media screen and (min-width: $small) {
-    margin-bottom:20px;
-    margin-top:10px;
-  }
 
   &__image{
     width:160px;
