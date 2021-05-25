@@ -75,6 +75,7 @@
   }
 
   &__text{
+    @include body_bold;
     color: $secondary;
   }
 }
